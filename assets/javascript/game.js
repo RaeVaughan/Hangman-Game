@@ -9,6 +9,17 @@ var guess = "";
 var guessCount = 12;
 var index = word.indexOf(guess);
 
+while(index > -1){
+	blanks[index] = guess;
+	var index = word.indexOf(guess, index + 1);
+}
+
+//document.onkeyup = function(event){
+//  var key = String.fromCharCode(event.keyCode).toLowerCase();
+//	if (){
+//		console.log("true");
+//	}
+//};
 
 
 
