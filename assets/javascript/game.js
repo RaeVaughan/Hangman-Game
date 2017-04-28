@@ -7,7 +7,7 @@ var guessCount = 10;
 var guessesMade = [];
 var wins = [];
 
-document.getElementById("word-display").innerHTML = "text here";
+document.getElementById("word-display").innerHTML = blanks;
 //var blanksDisplay = document.createElement("div");
 //blanksDisplay.innerHTML = "blanks";
 //wordDisplay.appendChild(blanksDisplay);
