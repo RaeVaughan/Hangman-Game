@@ -40,7 +40,8 @@ document.onkeyup = function(event){
 	if(blanks.indexOf("_") === -1){
 		wins++;
 		document.getElementById("win-display").innerHTML = wins;
-		guessCount=0;
+		guessCount=10;
+		document.getElementById("remaining-guesses").innerHTML = guessCount;
 	};
 
 
