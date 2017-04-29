@@ -42,6 +42,11 @@ document.onkeyup = function(event){
 		document.getElementById("win-display").innerHTML = wins;
 		guessCount=10;
 		document.getElementById("remaining-guesses").innerHTML = guessCount;
+		word = answers[Math.floor(Math.random() * answers.length)];
+		blanks = word.split("").map(function(){return "_";});
+		document.getElementById("word-display").innerHTML = blanks;
+	 guessesMade = [];
+	 document.getElementById("letters-guessed").innerHTML = guessesMade;
 	};
 
 
