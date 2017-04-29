@@ -5,10 +5,11 @@ var word = answers[Math.floor(Math.random() * answers.length)];
 var blanks = word.split("").map(function(){return "_";});
 var guessCount = 10;
 var guessesMade = [];
-var wins = [];
+var wins = 0;
 
- 
+document.getElementById("win-display").innerHTML = wins;
 document.getElementById("word-display").innerHTML = blanks;
+document.getElementById("remaining-guesses").innerHTML = guessCount;
 
 
 document.onkeyup = function(event){
@@ -17,6 +18,12 @@ document.onkeyup = function(event){
  	//console.log(guess);
  	var index = word.indexOf(guess);
 
+	if(index === -1){
+		guessCount--;
+		guessesMade.push(guess);
+		document.getElementById("remaining-guesses").innerHTML = guessCount;
+		document.getElementById("letters-guessed").innerHTML = guessesMade;
+	};
  	
   while(index > -1){
   	blanks[index] = guess;
@@ -24,10 +31,21 @@ document.onkeyup = function(event){
   	document.getElementById("word-display").innerHTML = blanks;
 	};
 
-	if (index === -1){
-		guessCount--;
-		guessesMade.push(guess);
+//when you lose
+	if(guessCount === 0){
+		location.reload();
 	};
+
+//when you win
+	if(blanks.indexOf("_") === -1){
+		wins++;
+		document.getElementById("win-display").innerHTML = wins;
+		guessCount=0;
+	};
+
+
+
+	
 
 
 
@@ -35,9 +53,6 @@ document.onkeyup = function(event){
 
 //to win
 //if (blanks.indexOf("_") === -1){};
-
-//to lose
-//if (guessCount === 0){};
 
 
 
