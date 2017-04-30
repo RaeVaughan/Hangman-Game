@@ -22,87 +22,82 @@ document.onkeypress = function(event){
 
  	if (guess.match(regex)){
 
+		if(index === -1){
+			guessCount--;
+			guessesMade.push(guess);
+			document.getElementById("remaining-guesses").innerHTML = guessCount;
+			document.getElementById("letters-guessed").innerHTML = guessesMade;
+		};
+	 	
+	  while(index > -1){
+	  	blanks[index] = guess;
+	  	var index = word.indexOf(guess, index + 1);
+	  	document.getElementById("word-display").innerHTML = blanks;
+		};
 
-	if(index === -1){
-		guessCount--;
-		guessesMade.push(guess);
-		document.getElementById("remaining-guesses").innerHTML = guessCount;
-		document.getElementById("letters-guessed").innerHTML = guessesMade;
-	};
- 	
-  while(index > -1){
-  	blanks[index] = guess;
-  	var index = word.indexOf(guess, index + 1);
-  	document.getElementById("word-display").innerHTML = blanks;
-	};
+	//when you lose
+		if(guessCount === 0){
+			location.reload();
+		};
 
-//when you lose
-	if(guessCount === 0){
-		location.reload();
-	};
+	//when you win
+		if(blanks.indexOf("_") === -1){
 
-//when you win
-	if(blanks.indexOf("_") === -1){
+			if(word === "knope"){
+				document.getElementById("defaultImg").src = "assets/images/knope.jpg"
+			}
 
-		if(word === "knope"){
-			document.getElementById("defaultImg").src = "assets/images/knope.jpg"
-		}
+			if(word === "perkins"){
+				document.getElementById("defaultImg").src = "assets/images/perkins.jpg"
+			}
 
-		if(word === "perkins"){
-			document.getElementById("defaultImg").src = "assets/images/perkins.jpg"
-		}
+			if(word === "swanson"){
+				document.getElementById("defaultImg").src = "assets/images/swanson.jpg"
+			}
 
-		if(word === "swanson"){
-			document.getElementById("defaultImg").src = "assets/images/swanson.jpg"
-		}
+			if(word === "mouserat"){
+				document.getElementById("defaultImg").src = "assets/images/mouserat.jpg"
+			}
 
-		if(word === "mouserat"){
-			document.getElementById("defaultImg").src = "assets/images/mouserat.jpg"
-		}
+			if(word === "eagleton"){
+				document.getElementById("defaultImg").src = "assets/images/eagleton.png"
+			}
 
-		if(word === "eagleton"){
-			document.getElementById("defaultImg").src = "assets/images/eagleton.png"
-		}
+			if(word === "pawnee"){
+				document.getElementById("defaultImg").src = "assets/images/pawnee-welcome.jpg"
+			}
 
-		if(word === "pawnee"){
-			document.getElementById("defaultImg").src = "assets/images/pawnee-welcome.jpg"
-		}
+			if(word === "sweetums"){
+				document.getElementById("defaultImg").src = "assets/images/sweetums.jpeg"
+			}
 
-		if(word === "sweetums"){
-			document.getElementById("defaultImg").src = "assets/images/sweetums.jpeg"
-		}
+			if(word === "april"){
+				document.getElementById("defaultImg").src = "assets/images/april.png"
+			}
 
-		if(word === "april"){
-			document.getElementById("defaultImg").src = "assets/images/april.png"
-		}
+			if(word === "gryzzlbox"){
+				document.getElementById("defaultImg").src = "assets/images/gryzzl.jpg"
+			}
 
-		if(word === "gryzzlbox"){
-			document.getElementById("defaultImg").src = "assets/images/gryzzl.jpg"
-		}
+			if(word === "waffles"){
+				document.getElementById("defaultImg").src = "assets/images/waffles.png"
+			}
 
-		if(word === "waffles"){
-			document.getElementById("defaultImg").src = "assets/images/waffles.png"
-		}
+			wins++;
+			document.getElementById("win-display").innerHTML = wins;
 
-		wins++;
-		document.getElementById("win-display").innerHTML = wins;
+			guessCount=10;
+			document.getElementById("remaining-guesses").innerHTML = guessCount;
 
-		guessCount=10;
-		document.getElementById("remaining-guesses").innerHTML = guessCount;
+			word = answers[Math.floor(Math.random() * answers.length)];
+			blanks = word.split("").map(function(){return "_";});
+			document.getElementById("word-display").innerHTML = blanks;
 
-		word = answers[Math.floor(Math.random() * answers.length)];
-		blanks = word.split("").map(function(){return "_";});
-		document.getElementById("word-display").innerHTML = blanks;
+		 guessesMade = [];
+		 document.getElementById("letters-guessed").innerHTML = guessesMade;
+		};
 
-	 guessesMade = [];
-	 document.getElementById("letters-guessed").innerHTML = guessesMade;
-	};
-
-}
-
-	
-
-
+	}
 
 };
 
